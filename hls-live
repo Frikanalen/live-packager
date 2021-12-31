@@ -1,0 +1,19 @@
+#!/usr/bin/env sh
+
+set +x
+
+VIDEO_IN=http://fk.dev.local/cubemap/program.ts
+VIDEO_OUT=frikanalen_hls
+HLS_TIME=4
+FPS=50
+GOP_SIZE=100
+PRESET_P=veryfast
+
+# HLS
+ffmpeg -i $VIDEO_IN -y \
+    -c:v copy -c:a copy \
+    -f hls -hls_time $HLS_TIME -hls_flags independent_segments \
+    -strftime_mkdir 1 \
+    -master_pl_name $VIDEO_OUT.m3u8 \
+    -hls_segment_filename stream/frikanalen_hls_%v/s%06d.ts \
+    stream/frikanalen_hls_%v.m3u8
