@@ -9,11 +9,13 @@ FPS=50
 GOP_SIZE=100
 PRESET_P=veryfast
 
+cd stream
+
 # HLS
 ffmpeg -i $VIDEO_IN -y \
     -c:v copy -c:a copy \
     -f hls -hls_time $HLS_TIME -hls_flags independent_segments \
     -strftime_mkdir 1 \
     -master_pl_name $VIDEO_OUT.m3u8 \
-    -hls_segment_filename stream/hls_%v/s%06d.ts \
-    stream/program_%v.m3u8
+    -hls_segment_filename hls_%v/s%06d.ts \
+    program_%v.m3u8
