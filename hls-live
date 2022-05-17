@@ -2,7 +2,6 @@
 
 set +x
 
-VIDEO_IN=http://fk.dev.local/cubemap/program.ts
 VIDEO_OUT=program
 HLS_TIME=4
 FPS=50
