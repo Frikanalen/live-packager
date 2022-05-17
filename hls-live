@@ -13,7 +13,10 @@ cd stream
 # HLS
 ffmpeg -i $VIDEO_IN -y \
     -c:v copy -c:a copy \
-    -f hls -hls_time $HLS_TIME -hls_flags independent_segments \
+    -f hls -hls_time $HLS_TIME \
+    -hls_flags independent_segments+program_date_time \
+    -hls_playlist_type event \
+    -master_pl_publish_rate 10 \
     -strftime_mkdir 1 \
     -master_pl_name $VIDEO_OUT.m3u8 \
     -hls_segment_filename hls_%v/s%06d.mp4 \
