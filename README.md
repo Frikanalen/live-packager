@@ -1,6 +1,15 @@
 # live-packager
 
+This packages the live stream as an HLS stream.
+
 Set ```VIDEO_IN``` to your input HTTP URI
+
+## TODO
+
+- DASH support
+- Multiple bitrates/tuned profiles
+- Meaningful liveness/readiness detection
+- Meaningful monitoring
 
 ## Local experimentation
 
