@@ -12,10 +12,9 @@ cd stream
 
 # HLS
 ffmpeg -i $VIDEO_IN -y \
-    -c:v copy -c:a libfdk_aac \
+    -c:v libx264 -c:a libfdk_aac \
     -b:v 5000k -b:a 192k \
     -f hls -hls_time $HLS_TIME \
-    -hls_flags independent_segments \
     -hls_playlist_type event \
     -hls_segment_type fmp4 \
     -master_pl_publish_rate 10 \
