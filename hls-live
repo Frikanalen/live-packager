@@ -2,12 +2,18 @@
 
 set +x
 
+if [[ -z "${VIDEO_IN}" ]]; then
+    echo "VIDEO_IN must be set!"
+    exit 1
+fi
+
 VIDEO_OUT=program
 HLS_TIME=4
 FPS=50
 GOP_SIZE=100
 PRESET_P=veryfast
 
+mkdir stream || echo
 cd stream
 
 # HLS
@@ -17,6 +23,8 @@ ffmpeg -i $VIDEO_IN -y \
     -f hls -hls_time $HLS_TIME \
     -hls_playlist_type event \
     -hls_segment_type fmp4 \
+    -hls_flags delete_segments \
+    -hls_list_size 50 \
     -master_pl_publish_rate 10 \
     -strftime_mkdir 1 \
     -master_pl_name $VIDEO_OUT.m3u8 \
