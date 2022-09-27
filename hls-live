@@ -21,7 +21,6 @@ ffmpeg -i $VIDEO_IN -y \
     -c:v libx264 -c:a libfdk_aac \
     -b:v 5000k -b:a 192k \
     -f hls -hls_time $HLS_TIME \
-    -hls_playlist_type event \
     -hls_segment_type fmp4 \
     -hls_flags delete_segments \
     -hls_list_size 50 \
