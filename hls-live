@@ -25,6 +25,7 @@ ffmpeg -i $VIDEO_IN -y \
     -preset veryfast \
     -hls_flags delete_segments \
     -hls_list_size 50 \
+    -nostats \
     -master_pl_publish_rate 10 \
     -strftime_mkdir 1 \
     -master_pl_name $VIDEO_OUT.m3u8 \
