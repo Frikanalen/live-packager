@@ -22,6 +22,7 @@ ffmpeg -i $VIDEO_IN -y \
     -b:v 5000k -b:a 192k \
     -f hls -hls_time $HLS_TIME \
     -hls_segment_type fmp4 \
+    -preset veryfast \
     -hls_flags delete_segments \
     -hls_list_size 50 \
     -master_pl_publish_rate 10 \
